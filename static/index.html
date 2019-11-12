@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Youtube Redirect</title>
+
+    <style>
+      body {
+        background-color: #f9f9f9;
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+          sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        padding: 3em;
+      }
+
+      h1 {
+        font-size: 64px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: auto;
+        padding-top: 10em;
+      }
+
+      .input {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+        font-size: 24px;
+        width: 100%;
+        max-width: 600px;
+      }
+
+      button {
+        display: block;
+        margin: auto;
+        margin-top: 2em;
+        border-radius: 5px;
+        padding: 1rem;
+        font-size: 24px;
+      }
+
+      button:hover {
+        background-color: rgb(168, 239, 255);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Huh?</h1>
+      <form id="search-form">
+        <input type="text" id="search-input" class="input" />
+
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+    <script>
+      const form = document.querySelector("#search-form");
+      const input = document.querySelector("#search-input");
+      form.addEventListener("submit", handleSubmit);
+
+      function handleSubmit(e) {
+        event.preventDefault();
+        const value = input.value;
+
+        if (!value) {
+          return;
+        }
+
+        const urlPrefix = window.location.href.replace(/\/$/, "");
+
+        window.location.href = urlPrefix + `/search?query=${value}`;
+      }
+    </script>
+  </body>
+</html>
